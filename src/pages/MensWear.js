@@ -10,7 +10,7 @@ class MensWear extends Component{
     }
 
     componentDidMount = async() => {
-        const response = await fetch('http://localhost:4000/api/cart',{method : 'GET'})
+        const response = await fetch('http://localhost:4000/api/products',{method : 'GET'})
         const products = await response.json()
         this.setState({
             products
@@ -23,9 +23,7 @@ class MensWear extends Component{
                 <h1>Men's Wear Page</h1>
                 {
                     products && products.map(product =>(
-                        <Fragment>
-                            <div>{product.item} - <span>{product.quantity}</span></div>
-                        </Fragment>
+                        <div key={product._id}>{product.name} - <span>{product.price}</span></div>
                     ))
                 }
             </Container>
